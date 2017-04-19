@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" version="3.2" group="system" method="upgrade">
+    <name>PLG_LAZYLOADFORJOOMLA</name>
+    <version>3.4.0</version>
+    <creationDate>2016-06-13</creationDate>
+    <license>http://www.gnu.org/licenses/gpl</license>
+    <copyright>Copyright 2016 Viktor Vogel. All rights reserved.</copyright>
+    <author>Viktor Vogel</author>
+    <authorEmail>admin@kubik-rubik.de</authorEmail>
+    <authorUrl>https://joomla-extensions.kubik-rubik.de/</authorUrl>
+    <description>PLG_LAZYLOADFORJOOMLA_XML_DESCRIPTION</description>
+    <files>
+        <filename plugin="lazyloadforjoomla">lazyloadforjoomla.php</filename>
+        <filename plugin="lazyloadforjoomla">index.html</filename>
+        <folder plugin="lazyloadforjoomla">fields</folder>
+        <folder plugin="lazyloadforjoomla">assets</folder>
+    </files>
+    <languages folder="language">
+        <language tag="de-DE">de-DE/de-DE.plg_system_lazyloadforjoomla.ini</language>
+        <language tag="de-DE">de-DE/de-DE.plg_system_lazyloadforjoomla.sys.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_system_lazyloadforjoomla.ini</language>
+        <language tag="en-GB">en-GB/en-GB.plg_system_lazyloadforjoomla.sys.ini</language>
+    </languages>
+    <updateservers>
+        <server type="extension" priority="1" name="PLG_LAZYLOADFORJOOMLA">https://check.kubik-rubik.de/updates/lazyloadforjoomla.xml</server>
+    </updateservers>
+    <config>
+        <fields name="params" addfieldpath="/plugins/system/lazyloadforjoomla/fields">
+            <fieldset name="settings">
+                <field type="krdonationcodecheck" />
+                <field name="framework_type" type="list" default="0" label="PLG_LAZYLOADFORJOOMLA_FRAMEWORK_TYPE" description="PLG_LAZYLOADFORJOOMLA_FRAMEWORK_TYPEDESC">
+                    <option value="0">jQuery</option>
+                    <option value="1">Mootools</option>
+                </field>
+                <field name="noscript_fallback" type="list" default="1" label="PLG_LAZYLOADFORJOOMLA_NOSCRIPT_FALLBACK" description="PLG_LAZYLOADFORJOOMLA_NOSCRIPT_FALLBACKDESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="exclude_imagenames" type="textarea" default="" label="PLG_LAZYLOADFORJOOMLA_EXCLUDEIMAGENAMES" description="PLG_LAZYLOADFORJOOMLA_EXCLUDEIMAGENAMESDESC" rows="6" cols="60" />
+                <field name="exclude_imagenames_toggle" type="list" default="0" label="PLG_LAZYLOADFORJOOMLA_EXCLUDEIMAGENAMES_TOGGLE" description="PLG_LAZYLOADFORJOOMLA_EXCLUDEIMAGENAMES_TOGGLEDESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="exclude_components" type="textarea" default="" label="PLG_LAZYLOADFORJOOMLA_EXCLUDECOMPONENTS" description="PLG_LAZYLOADFORJOOMLA_EXCLUDECOMPONENTSDESC" rows="6" cols="60" />
+                <field name="exclude_components_toggle" type="list" default="0" label="PLG_LAZYLOADFORJOOMLA_EXCLUDECOMPONENTS_TOGGLE" description="PLG_LAZYLOADFORJOOMLA_EXCLUDECOMPONENTS_TOGGLEDESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="exclude_urls" type="textarea" default="" label="PLG_LAZYLOADFORJOOMLA_EXCLUDEURLS" description="PLG_LAZYLOADFORJOOMLA_EXCLUDEURLSDESC" rows="6" cols="60" />
+                <field name="exclude_urls_toggle" type="list" default="0" label="PLG_LAZYLOADFORJOOMLA_EXCLUDEURLS_TOGGLE" description="PLG_LAZYLOADFORJOOMLA_EXCLUDEURLS_TOGGLEDESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="image_class" type="text" size="80" default="" label="PLG_LAZYLOADFORJOOMLA_IMAGECLASS" description="PLG_LAZYLOADFORJOOMLA_IMAGECLASSDESC" />
+                <field name="image_class_toggle" type="list" default="0" label="PLG_LAZYLOADFORJOOMLA_IMAGECLASS_TOGGLE" description="PLG_LAZYLOADFORJOOMLA_IMAGECLASS_TOGGLEDESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="exclude_editor" type="list" default="1" label="PLG_LAZYLOADFORJOOMLA_EXCLUDEJOOMLAEDITOR" description="PLG_LAZYLOADFORJOOMLA_EXCLUDEJOOMLAEDITORDESC">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="exclude_bots" type="list" default="1" label="PLG_LAZYLOADFORJOOMLA_EXCLUDEBOTS" description="PLG_LAZYLOADFORJOOMLA_EXCLUDEBOTSDESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="botslist" type="text" size="80" default="bot,spider,crawler,libwww,search,archive,slurp,teoma,facebook,twitter,googlebot" label="PLG_LAZYLOADFORJOOMLA_EXCLUDEBOTSLIST" description="PLG_LAZYLOADFORJOOMLA_EXCLUDEBOTSLISTDESC" />
+                <field name="viewslist" type="text" size="80" default="component,print" label="PLG_LAZYLOADFORJOOMLA_EXCLUDEVIEWSLIST" description="PLG_LAZYLOADFORJOOMLA_EXCLUDEVIEWSLISTDESC" />
+                <field name="threshold" type="text" size="80" default="0" filter="integer" label="PLG_LAZYLOADFORJOOMLA_THRESHOLD" description="PLG_LAZYLOADFORJOOMLA_THRESHOLDDESC" />
+                <field name="effect" type="list" default="fadein" label="PLG_LAZYLOADFORJOOMLA_EFFECT" description="PLG_LAZYLOADFORJOOMLA_EFFECTDESC">
+                    <option value="fadein">PLG_LAZYLOADFORJOOMLA_EFFECT_FADEIN</option>
+                    <option value="show">PLG_LAZYLOADFORJOOMLA_EFFECT_SHOW</option>
+                </field>
+            </fieldset>
+            <fieldset name="donation">
+                <field type="krdonationcodecheck" name="donation" />
+                <field name="donation_code" type="text" default="" size="40" label="KR_DONATION_CODE" description="KR_DONATION_CODEDESC" />
+                <field name="krtitle" type="krtitle" label="" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

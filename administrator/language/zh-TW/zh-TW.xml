@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- $Id: zh-CN.xml 216 2012-02-05   $ -->
+<metafile version="3.6" client="administrator">
+	<name>中文（正體）</name>
+	<version>3.6.100</version>
+	<creationDate>2012-01-22</creationDate>
+	<author>TUBE</author>
+	<authorEmail>tw0098@hotmail.com</authorEmail>
+	<authorUrl>pc-tube.idv.tw</authorUrl>
+	<copyright>Copyright (C) 2010 - 2012 CHN Joomla Translation (http://joomlacode.org/gf/project/choice/). All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<description>Joomla 3.6 管理後台語言，Joomla簡體中文翻譯組（CHN Joomla Translation Team）翻譯。TUBE轉譯為正體中文</description>
+
+	<metadata>
+		<name>正體中文</name>
+		<tag>zh-TW</tag>
+		<rtl>0</rtl>
+		<locale>zh_TW.utf8, zh_TW.UTF-8, zh_TW, chn_TW, tw, chinese</locale>
+		<firstDay>0</firstDay>
+	</metadata>
+</metafile>

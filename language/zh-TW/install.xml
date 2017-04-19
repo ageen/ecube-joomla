@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" client="site" type="language" method="upgrade">
+	<name>正體中文</name>
+	<tag>zh-TW</tag>
+	<version>3.6.100</version>
+	<creationDate>2012-02-05</creationDate>
+	<author>CHN Translation Team</author>
+	<authorEmail>zhous1998@sohu.com</authorEmail>
+	<authorUrl>www.joomla.cn</authorUrl>
+	<copyright>Copyright (C) 2010 CHN Joomla Translation Team  (http://joomlacode.org/gf/project/choice/). All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>
+    <![CDATA[
+<div align="center">
+ <table border="0" width="90%">
+  <table width="100%" border="0">
+  <tr>
+    <td colspan="2">Chinese language for Joomla 1.6 back-end. Translated by CHN Joomla Translation Team, one of Joomla Accredited Translations.</td>
+  </tr>
+  <tr>
+    <td colspan="2">Joomla 3.3 簡體中文語言是由Joomla授權翻譯組的Derek Joe在Joomla 1.6翻譯工作的基礎上補充翻譯。</td>
+  </tr>
+  <tr>
+    <td colspan="2">Joomla 1.6簡體中文語言包的主要貢獻人：</td>
+  </tr>
+  <tr>
+    <td colspan="2">前台： <a href="http://joomlacode.org/gf/user/wuyujie/" target="_blank">武玉傑</a>(wuyujie)、 <a href="http://joomlacode.org/gf/user/gzpan123/" target="_blank">郭志攀</a></td>
+  </tr>
+  <tr>
+    <td colspan="2">後台： <a href="http://joomlacode.org/gf/user/keydiagram/" target="_blank">Key Diagram</a>、<a href="http://joomlacode.org/gf/user/tchyusuf/">Yusuf  Wang</a></td>
+  </tr>
+  <tr>
+    <td colspan="2">安裝： <a href="http://joomlacode.org/gf/user/freechoice/" target="_blank">Johnathan Cheun</a>、<a href="http://joomlacode.org/gf/user/tchyusuf/">Yusuf  Wang</a>、 <a href="http://joomlacode.org/gf/user/zhous/" target="_blank">Derek Joe</a></td>
+  </tr>
+  <tr>
+    <td colspan="2">示範內容及編輯器： <a href="http://joomlacode.org/gf/user/zhous/" target="_blank">Derek Joe</a></td>
+  </tr>
+  <tr>
+    <td colspan="2">多謝大家的辛勤勞動！謝謝wayne82的反饋與建議！</td>
+  </tr>
+  <tr>
+    <td width="132"><p><a href="http://www.joomla.cn/index.php?option=com_kunena&func=showcat&catid=34&Itemid=46&lang=zh" target="_blank"><img src="http://www.joomla.cn/images/aboutjoomlacn.png" alt="囧啦!中國" width="130" height="70" align="left" longdesc="http://www.joomla.cn"><br />
+    </a></p></td>
+    <td valign="middle"><a href="http://www.joomla.cn/index.php?option=com_kunena&func=showcat&catid=34&Itemid=46&lang=zh" target="_blank">Joomla及其增加漢化的分享與討論請訪問"囧啦!中國"</a><br />
+      <b>歡迎喜歡翻譯且懂得使用SVN的朋友</b><br />
+    <a href="http://www.joomla.cn/index.php?option=com_kunena&func=view&catid=34&id=9537&Itemid=46" target="_blank"><b>加入我們的翻譯組（真正自主的協作方式）</b></a></td>
+  </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+  </tr>
+</table>
+ </div>
+  ]]>
+	</description>
+
+	<files>
+		<filename>index.html</filename>
+		<filename>zh-TW.com_contact.ini</filename>
+		<filename>zh-TW.com_content.ini</filename>
+		<filename>zh-TW.com_finder.ini</filename>
+		<filename>zh-TW.com_mailto.ini</filename>
+		<filename>zh-TW.com_media.ini</filename>
+		<filename>zh-TW.com_messages.ini</filename>
+		<filename>zh-TW.com_newsfeeds.ini</filename>
+		<filename>zh-TW.com_search.ini</filename>
+		<filename>zh-TW.com_users.ini</filename>
+		<filename>zh-TW.com_weblinks.ini</filename>
+		<filename>zh-TW.com_wrapper.ini</filename>
+		<filename>zh-TW.files_joomla.sys.ini</filename>
+		<filename>zh-TW.finder_cli.ini</filename>
+		<filename>zh-TW.ini</filename>
+		<filename>zh-TW.lib_joomla.ini</filename>
+		<filename>zh-TW.localise.php</filename>
+		<filename>zh-TW.mod_articles_archive.ini</filename>
+		<filename>zh-TW.mod_articles_archive.sys.ini</filename>
+		<filename>zh-TW.mod_articles_categories.ini</filename>
+		<filename>zh-TW.mod_articles_categories.sys.ini</filename>
+		<filename>zh-TW.mod_articles_category.ini</filename>
+		<filename>zh-TW.mod_articles_category.sys.ini</filename>
+		<filename>zh-TW.mod_articles_latest.ini</filename>
+		<filename>zh-TW.mod_articles_latest.sys.ini</filename>
+		<filename>zh-TW.mod_articles_news.ini</filename>
+		<filename>zh-TW.mod_articles_news.sys.ini</filename>
+		<filename>zh-TW.mod_articles_popular.ini</filename>
+		<filename>zh-TW.mod_articles_popular.sys.ini</filename>
+		<filename>zh-TW.mod_banners.ini</filename>
+		<filename>zh-TW.mod_banners.sys.ini</filename>
+		<filename>zh-TW.mod_breadcrumbs.ini</filename>
+		<filename>zh-TW.mod_breadcrumbs.sys.ini</filename>
+		<filename>zh-TW.mod_custom.ini</filename>
+		<filename>zh-TW.mod_custom.sys.ini</filename>
+		<filename>zh-TW.mod_feed.ini</filename>
+		<filename>zh-TW.mod_feed.sys.ini</filename>
+		<filename>zh-TW.mod_finder.ini</filename>
+		<filename>zh-TW.mod_finder.sys.ini</filename>
+		<filename>zh-TW.mod_footer.ini</filename>
+		<filename>zh-TW.mod_footer.sys.ini</filename>
+		<filename>zh-TW.mod_languages.ini</filename>
+		<filename>zh-TW.mod_languages.sys.ini</filename>
+		<filename>zh-TW.mod_login.ini</filename>
+		<filename>zh-TW.mod_login.sys.ini</filename>
+		<filename>zh-TW.mod_menu.ini</filename>
+		<filename>zh-TW.mod_menu.sys.ini</filename>
+		<filename>zh-TW.mod_random_image.ini</filename>
+		<filename>zh-TW.mod_random_image.sys.ini</filename>
+		<filename>zh-TW.mod_related_items.ini</filename>
+		<filename>zh-TW.mod_related_items.sys.ini</filename>
+		<filename>zh-TW.mod_search.ini</filename>
+		<filename>zh-TW.mod_search.sys.ini</filename>
+		<filename>zh-TW.mod_stats.ini</filename>
+		<filename>zh-TW.mod_stats.sys.ini</filename>
+		<filename>zh-TW.mod_syndicate.ini</filename>
+		<filename>zh-TW.mod_syndicate.sys.ini</filename>
+		<filename>zh-TW.mod_users_latest.ini</filename>
+		<filename>zh-TW.mod_users_latest.sys.ini</filename>
+		<filename>zh-TW.mod_weblinks.ini</filename>
+		<filename>zh-TW.mod_weblinks.sys.ini</filename>
+		<filename>zh-TW.mod_whosonline.ini</filename>
+		<filename>zh-TW.mod_whosonline.sys.ini</filename>
+		<filename>zh-TW.mod_wrapper.ini</filename>
+		<filename>zh-TW.mod_wrapper.sys.ini</filename>
+		<filename>zh-TW.tpl_beez3.ini</filename>
+		<filename>zh-TW.tpl_beez3.sys.ini</filename>
+		<filename>zh-TW.tpl_protostar.ini</filename>
+		<filename>zh-TW.tpl_protostar.sys.ini</filename>
+		<filename file="meta">install.xml</filename>
+		<filename file="meta">zh-TW.xml</filename>
+	</files>
+</extension>
