@@ -241,7 +241,6 @@ class ContentModelArticle extends JModelItem
 				}
 			}
 		}
-
 		return $this->_item[$pk];
 	}
 

@@ -98,7 +98,7 @@ class UsersControllerUser extends UsersController
 
 		// Set the return URL in the user state to allow modification by plugins
 		$app->setUserState('users.login.form.return', $data['return']);
-echo "test";
+
 		// Get the log in options.
 		$options = array();
 		$options['remember'] = $this->input->getBool('remember', false);

@@ -110,7 +110,6 @@ class JErrorPage
 						'debug'     => JDEBUG,
 					)
 				);
-
 				// Do not allow cache
 				$app->allowCache(false);
 
@@ -138,7 +137,6 @@ class JErrorPage
 				// Pass the error down
 			}
 		}
-
 		// This isn't an Exception, we can't handle it.
 		if (!headers_sent())
 		{

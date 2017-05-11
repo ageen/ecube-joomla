@@ -141,6 +141,7 @@ class JApplicationWeb extends JApplicationBase
 		else
 		{
 			$this->client = new JApplicationWebClient;
+			$func = new ReflectionClass('JApplicationWebClient');  
 		}
 
 		// Load the configuration object.
@@ -445,7 +446,6 @@ class JApplicationWeb extends JApplicationBase
 		}
 
 		$this->sendHeaders();
-
 		echo $this->getBody();
 	}
 
@@ -698,6 +698,7 @@ class JApplicationWeb extends JApplicationBase
 	 */
 	public function setBody($content)
 	{
+		// 将文档渲染结果放到body区域
 		$this->response->body = array((string) $content);
 
 		return $this;

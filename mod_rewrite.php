@@ -19,5 +19,5 @@ function isRewriteMod()
   }
   return $bIsRewrite;
 }
-echo "test";
+
 if (!isRewriteMod()) exit('Please install Apache mod_rewrite module.');

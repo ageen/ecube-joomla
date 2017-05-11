@@ -232,7 +232,6 @@ abstract class JHtml
 		{
 			$temp[] = &$arg;
 		}
-
 		return call_user_func_array($function, $temp);
 	}
 

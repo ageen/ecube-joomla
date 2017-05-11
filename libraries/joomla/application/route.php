@@ -96,7 +96,6 @@ class JRoute
 		{
 			$url = htmlspecialchars($url, ENT_COMPAT, 'UTF-8');
 		}
-
 		return $url;
 	}
 }

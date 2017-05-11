@@ -52,7 +52,7 @@ class PlgAuthenticationCookie extends JPlugin
 		{
 			return false;
 		}
-echo "test";exit;
+
 		// Get cookie
 		$cookieName  = 'joomla_remember_me_' . JUserHelper::getShortHashedUserAgent();
 		$cookieValue = $this->app->input->cookie->get($cookieName);

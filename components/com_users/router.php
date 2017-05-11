@@ -41,7 +41,7 @@ class UsersRouter extends JComponentRouterBase
 
 		// Get the relevant menu items if not loaded.
 		if (empty($items))
-		{echo "test";exit;
+		{
 			// Get all relevant menu items.
 			$items = $this->menu->getItems('component', 'com_users');
 

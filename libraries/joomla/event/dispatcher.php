@@ -127,7 +127,6 @@ class JEventDispatcher extends JObject
 	public function trigger($event, $args = array())
 	{
 		$result = array();
-
 		/*
 		 * If no arguments were passed, we still need to pass an empty array to
 		 * the call_user_func_array function.
@@ -163,13 +162,11 @@ class JEventDispatcher extends JObject
 			{
 				$value = call_user_func_array($this->_observers[$key]['handler'], $args);
 			}
-
 			if (isset($value))
 			{
 				$result[] = $value;
 			}
 		}
-
 		return $result;
 	}
 

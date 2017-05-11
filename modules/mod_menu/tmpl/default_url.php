@@ -14,6 +14,9 @@ $attributes = array();
 if ($item->anchor_title)
 {
 	$attributes['title'] = $item->anchor_title;
+	if($item->anchor_title == "dropdown"){
+		$attributes['data-toggle'] = "dropdown";
+	}
 }
 
 if ($item->anchor_css)
@@ -27,7 +30,9 @@ if ($item->anchor_rel)
 }
 
 $linktype = $item->title;
-
+if($item->anchor_title == "dropdown"){
+	$linktype = $linktype . ' <b class="caret"></b>';	
+}
 if ($item->menu_image)
 {
 	$linktype = JHtml::_('image', $item->menu_image, $item->title);

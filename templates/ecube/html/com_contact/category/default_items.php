@@ -9,163 +9,109 @@
 
 defined('_JEXEC') or die;
 
-JHtml::_('behavior.framework');
-
 $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
 ?>
 <?php if (empty($this->items)) : ?>
-	<p> <?php echo JText::_('COM_CONTACT_NO_CONTACTS'); ?> </p>
+	<p> <?php echo JText::_('COM_CONTACT_NO_CONTACTS'); ?>	 </p>
 <?php else : ?>
 
-<form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm">
-<?php if ($this->params->get('show_pagination_limit')) : ?>
-	<fieldset class="filters">
-	<legend class="hidelabeltxt"><?php echo JText::_('JGLOBAL_FILTER_LABEL'); ?></legend>
-
-		<div class="display-limit">
-			<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>&#160;
-			<?php echo $this->pagination->getLimitBox(); ?>
-		</div>
-	</fieldset>
-<?php endif; ?>
-	<table class="category">
-		<?php if ($this->params->get('show_headings')) : ?>
-		<thead><tr>
-
-			<?php if ($this->params->get('show_image_heading')) : ?>
-			<th class="item-image">
-			</th>
-			<?php endif; ?>
-			<th class="item-title">
-				<?php echo JHtml::_('grid.sort', 'COM_CONTACT_CONTACT_EMAIL_NAME_LABEL', 'a.name', $listDirn, $listOrder); ?>
-			</th>
-			<?php if ($this->params->get('show_position_headings')) : ?>
-			<th class="item-position">
-				<?php echo JHtml::_('grid.sort', 'COM_CONTACT_POSITION', 'a.con_position', $listDirn, $listOrder); ?>
-			</th>
-			<?php endif; ?>
-			<?php if ($this->params->get('show_email_headings')) : ?>
-			<th class="item-email">
-				<?php echo JText::_('JGLOBAL_EMAIL'); ?>
-			</th>
-			<?php endif; ?>
-			<?php if ($this->params->get('show_telephone_headings')) : ?>
-			<th class="item-phone">
-				<?php echo JText::_('COM_CONTACT_TELEPHONE'); ?>
-			</th>
-			<?php endif; ?>
-
-			<?php if ($this->params->get('show_mobile_headings')) : ?>
-			<th class="item-phone">
-				<?php echo JText::_('COM_CONTACT_MOBILE'); ?>
-			</th>
-			<?php endif; ?>
-
-			<?php if ($this->params->get('show_fax_headings')) : ?>
-			<th class="item-phone">
-				<?php echo JText::_('COM_CONTACT_FAX'); ?>
-			</th>
-			<?php endif; ?>
-
-			<?php if ($this->params->get('show_suburb_headings')) : ?>
-			<th class="item-suburb">
-				<?php echo JHtml::_('grid.sort', 'COM_CONTACT_SUBURB', 'a.suburb', $listDirn, $listOrder); ?>
-			</th>
-			<?php endif; ?>
-
-			<?php if ($this->params->get('show_state_headings')) : ?>
-			<th class="item-state">
-				<?php echo JHtml::_('grid.sort', 'COM_CONTACT_STATE', 'a.state', $listDirn, $listOrder); ?>
-			</th>
-			<?php endif; ?>
-
-			<?php if ($this->params->get('show_country_headings')) : ?>
-			<th class="item-state">
-				<?php echo JHtml::_('grid.sort', 'COM_CONTACT_COUNTRY', 'a.country', $listDirn, $listOrder); ?>
-			</th>
-			<?php endif; ?>
-
-			</tr>
-		</thead>
+	<form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm">
+	<?php if ($this->params->get('filter_field') || $this->params->get('show_pagination_limit')) :?>
+	<fieldset class="filters btn-toolbar">
+		<?php if ($this->params->get('filter_field')) :?>
+			<div class="btn-group">
+				<label class="filter-search-lbl element-invisible" for="filter-search"><span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span><?php echo JText::_('COM_CONTACT_FILTER_LABEL') . '&#160;'; ?></label>
+				<input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="inputbox" onchange="document.adminForm.submit();" title="<?php echo JText::_('COM_CONTACT_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo JText::_('COM_CONTACT_FILTER_SEARCH_DESC'); ?>" />
+			</div>
 		<?php endif; ?>
 
-		<tbody>
+		<?php if ($this->params->get('show_pagination_limit')) : ?>
+			<div class="btn-group pull-right">
+				<label for="limit" class="element-invisible">
+					<?php echo JText::_('JGLOBAL_DISPLAY_NUM'); ?>
+				</label>
+				<?php echo $this->pagination->getLimitBox(); ?>
+			</div>
+		<?php endif; ?>
+	</fieldset>
+	<?php endif; ?>
+	<div class="container" style="margin-bottom: 15px;">
+		<ul class="category">
 			<?php foreach ($this->items as $i => $item) : ?>
-				<?php if ($this->items[$i]->published == 0) : ?>
-					<tr class="system-unpublished cat-list-row<?php echo $i % 2; ?>">
-				<?php else: ?>
-					<tr class="cat-list-row<?php echo $i % 2; ?>" >
-				<?php endif; ?>
+
+				<?php if (in_array($item->access, $this->user->getAuthorisedViewLevels())) : ?>
+					<?php if ($this->items[$i]->published == 0) : ?>
+						<li class="row system-unpublished cat-list-row<?php echo $i % 2; ?>">
+					<?php else: ?>
+						<li class="row cat-list-row<?php echo $i % 2; ?>" >
+					<?php endif; ?>
 
 					<?php if ($this->params->get('show_image_heading')) : ?>
-						<td class="item-image">
+						<?php $contact_width = 7; ?>
+						<div class="col-md-4">
+							<div class="contact-img">
 							<?php if ($this->items[$i]->image) : ?>
-								<?php echo JHtml::_('image', $this->items[$i]->image, JText::_('COM_CONTACT_IMAGE_DETAILS'), array('class' => 'contact-thumbnail img-thumbnail')); ?>
+								<a href="<?php echo JRoute::_(ContactHelperRoute::getContactRoute($item->slug, $item->catid)); ?>">
+									<?php echo JHtml::_('image', $this->items[$i]->image, JText::_('COM_CONTACT_IMAGE_DETAILS'), array('class' => 'contact-thumbnail')); ?></a>
 							<?php endif; ?>
-						</td>
+							</div>
+						</div>
+					<?php else : ?>
+						<?php $contact_width = 9; ?>
 					<?php endif; ?>
 
-					<td class="item-title">
-						<a href="<?php echo JRoute::_(ContactHelperRoute::getContactRoute($item->slug, $item->catid)); ?>">
-							<?php echo $item->name; ?></a>
-					</td>
+					<div class="list-title col-md-4">
+						<a href="<?php echo JRoute::_(ContactHelperRoute::getContactRoute($item->slug, $item->catid)); ?>"><?php echo $item->name; ?></a>
+						<?php if ($this->items[$i]->published == 0) : ?>
+							<span class="label label-warning"><?php echo JText::_('JUNPUBLISHED'); ?></span>
+						<?php endif; ?>
+						<?php echo $item->event->afterDisplayTitle; ?>
 
-					<?php if ($this->params->get('show_position_headings')) : ?>
-						<td class="item-position">
-							<?php echo $item->con_position; ?>
-						</td>
-					<?php endif; ?>
+						<?php echo $item->event->beforeDisplayContent; ?>
 
-					<?php if ($this->params->get('show_email_headings')) : ?>
-						<td class="item-email">
-							<?php echo $item->email_to; ?>
-						</td>
-					<?php endif; ?>
+						<?php if ($this->params->get('show_position_headings')) : ?>
+								<span class="label label-primary"><?php echo $item->con_position; ?></span>
+						<?php endif; ?>
+						<p>
+						<?php if ($this->params->get('show_email_headings')) : ?>
+								<?php echo $item->email_to; ?></p>
+						<?php endif; ?>
+						<?php if ($this->params->get('show_suburb_headings') && !empty($item->suburb)) : ?>
+								<p><?php echo $item->suburb . ', '; ?>
+						<?php endif; ?>
 
-					<?php if ($this->params->get('show_telephone_headings')) : ?>
-						<td class="item-phone">
-							<?php echo $item->telephone; ?>
-						</td>
-					<?php endif; ?>
+						<?php if ($this->params->get('show_state_headings') && !empty($item->state)) : ?>
+								<?php echo $item->state . ', '; ?>
+						<?php endif; ?>
 
-					<?php if ($this->params->get('show_mobile_headings')) : ?>
-						<td class="item-phone">
-							<?php echo $item->mobile; ?>
-						</td>
-					<?php endif; ?>
+						<?php if ($this->params->get('show_country_headings') && !empty($item->country)) : ?>
+								<?php echo $item->country; ?>
+						<?php endif; ?>
+						</p>
+					</div>
 
-					<?php if ($this->params->get('show_fax_headings')) : ?>
-					<td class="item-phone">
-						<?php echo $item->fax; ?>
-					</td>
-					<?php endif; ?>
+					<div class="list-contact col-md-4">
+						<?php if ($this->params->get('show_telephone_headings') && !empty($item->telephone)) : ?>
+							<?php echo JText::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $item->telephone); ?><br />
+						<?php endif; ?>
 
-					<?php if ($this->params->get('show_suburb_headings')) : ?>
-					<td class="item-suburb">
-						<?php echo $item->suburb; ?>
-					</td>
-					<?php endif; ?>
+						<?php if ($this->params->get('show_mobile_headings') && !empty ($item->mobile)) : ?>
+								<?php echo JText::sprintf('COM_CONTACT_MOBILE_NUMBER', $item->mobile); ?><br />
+						<?php endif; ?>
 
-					<?php if ($this->params->get('show_state_headings')) : ?>
-					<td class="item-state">
-						<?php echo $item->state; ?>
-					</td>
-					<?php endif; ?>
+						<?php if ($this->params->get('show_fax_headings') && !empty($item->fax) ) : ?>
+							<?php echo JText::sprintf('COM_CONTACT_FAX_NUMBER', $item->fax); ?><br />
+						<?php endif; ?>
+					</div>
 
-					<?php if ($this->params->get('show_country_headings')) : ?>
-					<td class="item-state">
-						<?php echo $item->country; ?>
-					</td>
-					<?php endif; ?>
-
-				</tr>
+					<?php echo $item->event->afterDisplayContent; ?>
+				</li>
+				<?php endif; ?>
 			<?php endforeach; ?>
-
-		</tbody>
-	</table>
-
-	<?php if ($this->params->get('show_pagination')) : ?>
+		</ul>
+	</li>
+	<?php if ($this->params->get('show_pagination', 2)) : ?>
 	<div class="pagination">
 		<?php if ($this->params->def('show_pagination_results', 1)) : ?>
 		<p class="counter">

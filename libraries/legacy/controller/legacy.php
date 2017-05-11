@@ -695,7 +695,6 @@ class JControllerLegacy extends JObject
 		{
 			throw new Exception(JText::sprintf('JLIB_APPLICATION_ERROR_TASK_NOT_FOUND', $task), 404);
 		}
-
 		// Record the actual task being fired
 		$this->doTask = $doTask;
 

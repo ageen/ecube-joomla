@@ -9,7 +9,6 @@
 
 defined('_JEXEC') or die;
 JLoader::register('UsersHelperRoute', JPATH_COMPONENT . '/helpers/route.php');
-echo JFactory::getApplication()->input->get('task');
 $controller = JControllerLegacy::getInstance('Users');
 $controller->execute(JFactory::getApplication()->input->get('task', 'display'));
 $controller->redirect();

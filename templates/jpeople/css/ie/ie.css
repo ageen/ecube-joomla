@@ -1,0 +1,13 @@
+#leftbar-w {float:left;}
+#rightbar-w {float:right;}
+#sidebar .module {margin-bottom: 15px; max-width:190px;}
+.well {max-width:180px;}
+.logo-container { width:25%;}
+
+#centercontent_both {width: 65% !important; margin-left: 25px;}
+#centercontent_one {width:77%; margin-left: 25px;}
+#nav ul li ul li {z-index:auto;}
+#socialwide {display:none;}
+
+#social {float: right;width: 110px; margin-top: 28px; margin-right:1px; z-index:10; display:inline-block;}
+.slicknav_menu {display:none;}

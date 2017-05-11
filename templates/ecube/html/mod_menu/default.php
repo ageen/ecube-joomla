@@ -8,12 +8,25 @@
  */
 
 defined('_JEXEC') or die;
-
+$user =& JFactory::getUser();
+$status = $user->guest;
 $id = '';
 
 if (($tagId = $params->get('tag_id', '')))
 {
 	$id = ' id="' . $tagId . '"';
+}
+
+if (isset($width))
+{
+	$moduleclass_sfx .= ' ' . 'mod_search' . $module->id;
+	$css = 'div.mod_search' . $module->id . ' input[type="search"]{ width:auto; }';
+	JFactory::getDocument()->addStyleDeclaration($css);
+	$width = ' size="' . $width . '"';
+}
+else
+{
+	$width = '';
 }
 
 // The menu class is deprecated. Use nav instead
@@ -27,7 +40,7 @@ if (($tagId = $params->get('tag_id', '')))
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><img src="templates/ecube/images/logo-40x40.png"></a>
+            <a class="navbar-brand" href="/"><img src="/images/logo-40x40.png"></a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -72,7 +85,7 @@ if (($tagId = $params->get('tag_id', '')))
 
 	if ($item->deeper)
 	{
-		$class .= ' deeper';
+		$class .= ' dropdown deeper';
 	}
 
 	if ($item->parent)
@@ -98,7 +111,7 @@ if (($tagId = $params->get('tag_id', '')))
 	// The next item is deeper.
 	if ($item->deeper)
 	{
-		echo '<ul class="nav-child unstyled small">';
+		echo '<ul class="nav-child dropdown-menu" role="menu">';
 	}
 	// The next item is shallower.
 	elseif ($item->shallower)
@@ -112,11 +125,49 @@ if (($tagId = $params->get('tag_id', '')))
 		echo '</li>';
 	}
 }
-?></ul>
-                <ul class="nav navbar-nav navbar-right">
-		            <li><a href="#">登录</a></li>
-		        </ul>
-            </div>
+?>
+</ul>
+<form  action="<?php echo JRoute::_('index.php');?>" role="search" class="navbar-form navbar-left">
+    <div class="form-group">
+        <input type="text" name="searchword" id="mod-search-searchword" maxlength="<?php echo $maxlength;?>" placeholder="<?php echo $text;?>" class="form-control">
+    </div>
+	<input type="hidden" name="task" value="search" />
+	<input type="hidden" name="option" value="com_search" />
+	<input type="hidden" name="Itemid" value="<?php echo $mitemid; ?>" />
+</form>
+            <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="icon-cart"></span></a></li>
+            <?php if ($status == 1){ ?>
+                <li><a href="<?php echo JRoute::_('index.php?option=com_users&view=login'); ?>">登录</a></li>
+            <?php }else{ ?>
+            	<li>
+            		<a data-toggle="dropdown" class="dropdown-toggle" href="javascript:void(0);">你好：<?php echo $user->name;?>&nbsp;<b class="caret"></b></a>
+            		    <ul role="menu" class="dropdown-menu">
+	                        <li><a href="?option=com_users&view=profile" class="btn btn-link">基本信息</a></li>
+	                        <li>
+<form action="<?php echo JRoute::_('index.php', true, $params->get('usesecure')); ?>" method="post" id="login-form" class="form-vertical">
+<?php if ($params->get('greeting')) : ?>
+	<div class="login-greeting">
+	<?php if ($params->get('name') == 0) : ?>
+		<?php echo JText::sprintf('MOD_LOGIN_HINAME', htmlspecialchars($user->get('name'), ENT_COMPAT, 'UTF-8')); ?>
+	<?php else : ?>
+		<?php echo JText::sprintf('MOD_LOGIN_HINAME', htmlspecialchars($user->get('username'), ENT_COMPAT, 'UTF-8')); ?>
+	<?php endif; ?>
+	</div>
+<?php endif; ?>
+	<div class="logout-button text-center">
+		<input type="submit" name="Submit" class="btn btn-link" value="<?php echo JText::_('JLOGOUT'); ?>" />
+		<input type="hidden" name="option" value="com_users" />
+		<input type="hidden" name="task" value="user.logout" />
+		<input type="hidden" name="return" value="<?php echo $return; ?>" />
+		<?php echo JHtml::_('form.token'); ?>
+	</div>
+</form>
+						</li>
+                	</ul>
+        	</li>
+        <?php }?>
+        </ul>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>

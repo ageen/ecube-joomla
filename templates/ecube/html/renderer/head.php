@@ -116,7 +116,6 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 		}
 
 		$buffer .= $tab . '<title>' . htmlspecialchars($document->getTitle(), ENT_COMPAT, 'UTF-8') . '</title>' . $lnEnd;
-
 		// Generate link declarations
 		foreach ($document->_links as $link => $linkAtrr)
 		{
@@ -406,7 +405,6 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 		}
 
 		$defaultCssMimes = array('text/css');
-
 		// Generate stylesheet links
 		foreach ($document->_styleSheets as $strSrc => $strAttr)
 		{
@@ -462,14 +460,6 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 			$buffer .= $tab . '</style>' . $lnEnd;
 		}
 
-
-
-		// Output the custom tags - array_unique makes sure that we don't output the same tags twice
-		foreach (array_unique($document->_custom) as $custom)
-		{
-			$buffer .= $tab . $custom . $lnEnd;
-		}
-
 		return $buffer;
 	}
 
@@ -519,6 +509,72 @@ class JDocumentRendererHtmlHead extends JDocumentRenderer
 
 			$buffer .= '></script>' . $lnEnd;
 		}
+
+		// Generate script declarations
+		foreach ($document->_script as $type => $content)
+		{
+			$buffer .= $tab . '<script';
+
+			if (!is_null($type) && (!$document->isHtml5() || !in_array($type, $defaultJsMimes)))
+			{
+				$buffer .= ' type="' . $type . '"';
+			}
+
+			$buffer .= '>' . $lnEnd;
+
+			// This is for full XHTML support.
+			if ($document->_mime != 'text/html')
+			{
+				$buffer .= $tab . $tab . '//<![CDATA[' . $lnEnd;
+			}
+
+			$buffer .= $content . $lnEnd;
+
+			// See above note
+			if ($document->_mime != 'text/html')
+			{
+				$buffer .= $tab . $tab . '//]]>' . $lnEnd;
+			}
+
+			$buffer .= $tab . '</script>' . $lnEnd;
+		}
+
+		// Generate script language declarations.
+		if (count(JText::script()))
+		{
+			$buffer .= $tab . '<script';
+
+			if (!$document->isHtml5())
+			{
+				$buffer .= ' type="text/javascript"';
+			}
+
+			$buffer .= '>' . $lnEnd;
+
+			if ($document->_mime != 'text/html')
+			{
+				$buffer .= $tab . $tab . '//<![CDATA[' . $lnEnd;
+			}
+
+			$buffer .= $tab . $tab . '(function() {' . $lnEnd;
+			$buffer .= $tab . $tab . $tab . 'Joomla.JText.load(' . json_encode(JText::script()) . ');' . $lnEnd;
+			$buffer .= $tab . $tab . '})();' . $lnEnd;
+
+			if ($document->_mime != 'text/html')
+			{
+				$buffer .= $tab . $tab . '//]]>' . $lnEnd;
+			}
+
+			$buffer .= $tab . '</script>' . $lnEnd;
+		}
+
+		// Output the custom tags - array_unique makes sure that we don't output the same tags twice
+		foreach (array_unique($document->_custom) as $custom)
+		{
+			$buffer .= $tab . $custom . $lnEnd;
+		}
+
+		return $buffer;
 
 		// Output the custom tags - array_unique makes sure that we don't output the same tags twice
 		foreach (array_unique($document->_custom) as $custom)

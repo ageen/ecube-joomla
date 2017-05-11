@@ -401,6 +401,7 @@ class JComponentHelper
 	 */
 	protected static function executeComponent($path)
 	{
+		// 开启输出缓存
 		ob_start();
 		require_once $path;
 		$contents = ob_get_clean();

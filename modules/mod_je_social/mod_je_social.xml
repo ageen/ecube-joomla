@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.3" type="module" client="site" method="upgrade">
+	<name>Baidu share</name> 
+    <version>3.4.1</version>
+    <creationDate>February, 2015</creationDate>
+    <author>jExtensions.com</author>
+    <authorEmail>support@jExtensions.com</authorEmail>
+    <authorUrl>http://jExtensions.com</authorUrl>
+    <copyright>Copyright 2015 - jExtensions.com</copyright>
+    <license>GNU/GPL</license>
+	<description><![CDATA[
+	<h1 class="sub-heading"></h1>	
+	<div class="description">This modules base on JE Social Icons.<br/>
+	Visit for more information of <a href="http://jextensions.com/social-icons-module" target="_blank">JE Social Icons</a>.</div>
+		]]>
+	</description>
+
+	<files>
+		<filename module="mod_je_social">mod_je_social.php</filename>
+		<filename>index.html</filename>
+		<folder>images/</folder>
+		<folder>css/</folder>	
+		<folder>php/</folder>	
+	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_je_social.ini</language>
+		<language tag="zh-CN">language/zh-CN/zh-CN.mod_je_social.ini</language>
+	</languages>
+
+	<config>
+		<fields name="params" addfieldpath="/modules/mod_je_social/php">
+			<fieldset name="basic">
+				<field name="iconSize" type="list" default="0" label="Icon Size" description="Choose the size of the icons.">
+					<option value="16">16</option>
+					<option value="24">24</option>
+					<option value="32">32</option>
+				</field>		
+					<field name="Icon1" type="checkbox" value="1" description="MOD_JE_SOCIAL_EVERNOTECN" />
+					<field name="Icon2" type="checkbox" value="1" description="MOD_JE_SOCIAL_H163" />
+					<field name="Icon3" type="checkbox" value="1" description="MOD_JE_SOCIAL_MSHARE" />
+					<field name="Icon4" type="checkbox" value="1" description="MOD_JE_SOCIAL_TSINA" />
+					<field name="Icon5" type="checkbox" value="1" description="MOD_JE_SOCIAL_QZONE" />
+					<field name="Icon6" type="checkbox" value="1" description="MOD_JE_SOCIAL_RENREN" />
+					<field name="Icon7" type="checkbox" value="1" description="MOD_JE_SOCIAL_TQQ" />
+					<field name="Icon8" type="checkbox" value="1" description="MOD_JE_SOCIAL_KAIXIN001" />
+					<field name="Icon9" type="checkbox" value="1" description="MOD_JE_SOCIAL_TIEBA" />
+					<field name="Icon10" type="checkbox" value="1" description="MOD_JE_SOCIAL_SQQ" />
+					<field name="Icon11" type="checkbox" value="1" description="MOD_JE_SOCIAL_BDYSC" />
+					<field name="Icon12" type="checkbox" value="1" description="MOD_JE_SOCIAL_HUABAN" />
+					<field name="Icon13" type="checkbox" value="1" description="MOD_JE_SOCIAL_YOUDAO" />
+					<field name="Icon14" type="checkbox" value="1" description="MOD_JE_SOCIAL_WEALINK" />
+					<field name="Icon15" type="checkbox" value="1" description="MOD_JE_SOCIAL_TY" />
+					<field name="Icon16" type="checkbox" value="1" description="MOD_JE_SOCIAL_DUITANG" />
+					<field name="Icon17" type="checkbox" value="1" description="MOD_JE_SOCIAL_WEIXIN" />
+			<field type="asset" />
+			</fieldset>
+			
+			<fieldset name="advanced">
+				<field name="moduleclass_sfx" type="textarea" rows="3" label="Module Class Suffix"/>
+				
+				<field	name="cache" type="list" default="1" label="Caching" >
+					<option value="1">Use Global</option>
+					<option value="0">No Caching</option>
+				</field>
+				
+				<field	name="cache_time" type="text" default="900" label="Cache Time" />
+				
+				<field name="cachemode" type="hidden" default="static">
+					<option value="static"></option>
+				</field>
+			</fieldset>
+
+		</fields>
+	</config>
+</extension>

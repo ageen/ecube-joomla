@@ -1,21 +1,20 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  Templates.beez3
+ * @subpackage  mod_breadcrumbs
  *
  * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
+
+JHtml::_('bootstrap.tooltip');
 ?>
 
-<div class = "breadcrumbs<?php echo $moduleclass_sfx; ?>">
-<?php if ($params->get('showHere', 1))
-	{
-		echo '<span class="showHere">' .JText::_('MOD_BREADCRUMBS_HERE').'</span>';
-	}
+<ul itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb<?php echo $moduleclass_sfx; ?> unseen">
 
+	<?php
 	// Get rid of duplicated entries on trail including home page when using multilanguage
 	for ($i = 0; $i < $count; $i++)
 	{
@@ -27,36 +26,35 @@ defined('_JEXEC') or die;
 
 	// Find last and penultimate items in breadcrumbs list
 	end($list);
-	$last_item_key = key($list);
+	$last_item_key   = key($list);
 	prev($list);
 	$penult_item_key = key($list);
 
-	// Generate the trail
-	foreach ($list as $key => $item) :
 	// Make a link if not the last item in the breadcrumbs
 	$show_last = $params->get('showLast', 1);
-	if ($key != $last_item_key)
-	{
-		// Render all but last item - along with separator
-		if (!empty($item->link))
-		{
-			echo '<a href="' . $item->link . '" class="pathway">' . $item->name . '</a>';
-		}
-		else
-		{
-			echo '<span>' . $item->name . '</span>';
-		}
 
-		if (($key != $penult_item_key) || $show_last)
-		{
-			echo ' '.$separator.' ';
-		}
-
-	}
-	elseif ($show_last)
-	{
-		// Render last item if reqd.
-		echo '<span>' . $item->name . '</span>';
-	}
+	// Generate the trail
+	foreach ($list as $key => $item) :
+		if ($key != $last_item_key) :
+			// Render all but last item - along with separator ?>
+			<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+				<?php if (!empty($item->link)) : ?>
+					<a itemprop="item" href="<?php echo $item->link; ?>" class="pathway"><span itemprop="name"><?php echo $item->name; ?></span></a>
+				<?php else : ?>
+					<span itemprop="name">
+						<?php echo $item->name; ?>
+					</span>
+				<?php endif; ?>
+				<meta itemprop="position" content="<?php echo $key + 1; ?>">
+			</li>
+		<?php elseif ($show_last) :
+			// Render last item if reqd. ?>
+			<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="active">
+				<span itemprop="name">
+					<?php echo $item->name; ?>
+				</span>
+				<meta itemprop="position" content="<?php echo $key + 1; ?>">
+			</li>
+		<?php endif;
 	endforeach; ?>
-</div>
+</ul>

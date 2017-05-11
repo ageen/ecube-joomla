@@ -2,7 +2,7 @@
 class JConfig {
 	public $offline = '0';
 	public $offline_message = '本站正在维护中，暂不能访问。<br /> 请稍后再访问本站。';
-	public $display_offline_message = '1';
+	public $display_offline_message = '0';
 	public $offline_image = '';
 	public $sitename = 'e魔坊工作室';
 	public $editor = 'jce';
@@ -86,7 +86,7 @@ class JConfig {
 	public $session_memcache_server_port = '11211';
 	public $session_memcached_server_host = 'localhost';
 	public $session_memcached_server_port = '11211';
-	public $frontediting = '1';
+	public $frontediting = '0';
 	public $cookie_domain = '';
 	public $cookie_path = '';
 	public $asset_id = '1';

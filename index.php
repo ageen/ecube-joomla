@@ -35,10 +35,10 @@ if (!defined('_JDEFINES'))
 	define('JPATH_BASE', __DIR__);
 	require_once JPATH_BASE . '/includes/defines.php';
 }
-
 require_once JPATH_BASE . '/includes/framework.php';
 
 // Set profiler start time and memory usage and mark afterLoad in the profiler.
+// used to help evaluate the performance of different parts of the code.
 JDEBUG ? JProfiler::getInstance('Application')->setStart($startTime, $startMem)->mark('afterLoad') : null;
 
 // Instantiate the application.

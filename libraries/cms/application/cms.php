@@ -106,7 +106,6 @@ class JApplicationCms extends JApplicationWeb
 
 		// Load and set the dispatcher
 		$this->loadDispatcher();
-
 		// If JDEBUG is defined, load the profiler instance
 		if (defined('JDEBUG') && JDEBUG)
 		{
@@ -261,6 +260,7 @@ class JApplicationCms extends JApplicationWeb
 		$this->doExecute();
 
 		// If we have an application document object, render it.
+		// 渲染其它内容，modules和messages等
 		if ($this->document instanceof JDocument)
 		{
 			// Render the application output.
@@ -275,7 +275,6 @@ class JApplicationCms extends JApplicationWeb
 			// Trigger the onAfterCompress event.
 			$this->triggerEvent('onAfterCompress');
 		}
-
 		// Send the application response.
 		$this->respond();
 
@@ -404,7 +403,6 @@ class JApplicationCms extends JApplicationWeb
 			{
 				throw new RuntimeException(JText::sprintf('JLIB_APPLICATION_ERROR_APPLICATION_LOAD', $name), 500);
 			}
-
 			static::$instances[$name] = new $classname;
 		}
 
@@ -619,6 +617,7 @@ class JApplicationCms extends JApplicationWeb
 
 	/**
 	 * Initialise the application.
+	 * 确定用户所使用的编辑器。
 	 *
 	 * @param   array  $options  An optional associative array of configuration settings.
 	 *
@@ -834,7 +833,6 @@ class JApplicationCms extends JApplicationWeb
 
 		// Import the user plugin group.
 		JPluginHelper::importPlugin('user');
-
 		if ($response->status === JAuthentication::STATUS_SUCCESS)
 		{
 			/*
@@ -1081,7 +1079,6 @@ class JApplicationCms extends JApplicationWeb
 		{
 			$caching = true;
 		}
-
 		// Render the document.
 		$data = $this->document->render($caching, $this->docOptions);
 
@@ -1110,17 +1107,22 @@ class JApplicationCms extends JApplicationWeb
 	protected function route()
 	{
 		// Get the full request URI.
+		// 克隆JURI对象，避免无意修改到原始JURI对象
 		$uri = clone JUri::getInstance();
-
+		// 创建一个JRouter对象
 		$router = static::getRouter();
+		// 解析JURI对象，返回命令数组
+		// array(3) { ["option"]=> string(11) "com_content" ["view"]=> string(8) "featured" ["Itemid"]=> string(3) "101" }
 		$result = $router->parse($uri);
 
+		// 将返回数组放入$this->input中
 		foreach ($result as $key => $value)
 		{
 			$this->input->def($key, $value);
 		}
 
 		// Trigger the onAfterRoute event.
+		// 在此事件中执行任何系统插件
 		JPluginHelper::importPlugin('system');
 		$this->triggerEvent('onAfterRoute');
 	}

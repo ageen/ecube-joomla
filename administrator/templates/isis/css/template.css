@@ -7164,7 +7164,7 @@ a:focus {
 	outline: none;
 }
 .view-login {
-	background-color: #17568c;
+	background-color: #fff;
 	padding-top: 0;
 }
 .view-login .container {
@@ -7182,7 +7182,7 @@ a:focus {
 }
 .view-login .navbar-fixed-bottom,
 .view-login .navbar-fixed-bottom a {
-	color: #FCFCFC;
+	color: #006699;
 }
 .view-login .navbar-inverse.navbar-fixed-bottom,
 .view-login .navbar-inverse.navbar-fixed-bottom a {

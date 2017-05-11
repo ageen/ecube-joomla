@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  Templates.ECUBE
+ * @subpackage  Templates.protostar
  *
  * @copyright   Copyright (C) 2005 - 2016 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -10,108 +10,48 @@
 defined('_JEXEC') or die;
 
 /**
- * beezDivision chrome.
+ * This is a file to add template specific chrome to module rendering.  To use it you would
+ * set the style attribute for the given module(s) include in your template to use the style
+ * for each given modChrome function.
  *
- * @since   3.0
- */
-function modChrome_beezDivision($module, &$params, &$attribs)
-{
-	$headerLevel = isset($attribs['headerLevel']) ? (int) $attribs['headerLevel'] : 3;
-	if (!empty ($module->content)) : ?>
-		<div class="moduletable<?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8'); ?>">
-		<?php if ($module->showtitle) : ?>
-			<h<?php echo $headerLevel; ?>><?php echo $module->title; ?></h<?php echo $headerLevel; ?>>
-		<?php endif; ?>
-		<?php echo $module->content; ?></div>
-	<?php endif;
-}
-
-/**
- * beezHide chrome.
+ * eg. To render a module mod_test in the submenu style, you would use the following include:
+ * <jdoc:include type="module" name="test" style="submenu" />
  *
- * @since   3.0
- */
-function modChrome_beezHide($module, &$params, &$attribs)
-{
-	$headerLevel = isset($attribs['headerLevel']) ? (int) $attribs['headerLevel'] : 3;
-	$state = isset($attribs['state']) ? (int) $attribs['state'] :0;
-
-	if (!empty ($module->content)) { ?>
-
-<div
-	class="moduletable_js <?php echo htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8');?>"><?php if ($module->showtitle) : ?>
-<h<?php echo $headerLevel; ?> class="js_heading"> <?php echo $module->title; ?> <a href="#"
-	title="<?php echo JText::_('TPL_ECUBE_CLICK'); ?>"
-	onclick="auf('module_<?php echo $module->id; ?>'); return false"
-	class="opencloselink" id="link_<?php echo $module->id?>"> <span
-	class="no"><img src="templates/ecube/images/plus.png"
-	alt="<?php if ($state == 1) { echo JText::_('TPL_ECUBE_ALTOPEN');} else {echo JText::_('TPL_ECUBE_ALTCLOSE');} ?>" />
-</span></a></h<?php echo $headerLevel; ?>> <?php endif; ?>
-<div class="module_content <?php if ($state == 1){echo "open";} ?>"
-	id="module_<?php echo $module->id; ?>" tabindex="-1"><?php echo $module->content; ?></div>
-</div>
-	<?php }
-}
-
-/**
- * beezTabs chrome.
+ * This gives template designers ultimate control over how modules are rendered.
  *
- * @since   3.0
+ * NOTICE: All chrome wrapping methods should be named: modChrome_{STYLE} and take the same
+ * two arguments.
  */
-function modChrome_beezTabs($module, $params, $attribs)
+
+/*
+ * Module chrome for rendering the module in a submenu
+ */
+function modChrome_no($module, &$params, &$attribs)
 {
-	$area = isset($attribs['id']) ? (int) $attribs['id'] :'1';
-	$area = 'area-'.$area;
-
-	static $modulecount;
-	static $modules;
-
-	if ($modulecount < 1)
+	if ($module->content)
 	{
-		$modulecount = count(JModuleHelper::getModules($module->position));
-		$modules = array();
+		echo $module->content;
 	}
+}
 
-	if ($modulecount == 1)
+function modChrome_well($module, &$params, &$attribs)
+{
+	$moduleTag     = $params->get('module_tag', 'div');
+	$bootstrapSize = (int) $params->get('bootstrap_size', 0);
+	$moduleClass   = $bootstrapSize != 0 ? ' span' . $bootstrapSize : '';
+	$headerTag     = htmlspecialchars($params->get('header_tag', 'h3'), ENT_COMPAT, 'UTF-8');
+	$headerClass   = htmlspecialchars($params->get('header_class', 'page-header'), ENT_COMPAT, 'UTF-8');
+
+	if ($module->content)
 	{
-		$temp = new stdClass;
-		$temp->content = $module->content;
-		$temp->title = $module->title;
-		$temp->params = $module->params;
-		$temp->id = $module->id;
-		$modules[] = $temp;
-		// list of moduletitles
-		// list of moduletitles
-		echo '<div id="'. $area.'" class="tabouter"><ul class="tabs">';
+		echo '<' . $moduleTag . ' class="well ' . htmlspecialchars($params->get('moduleclass_sfx'), ENT_COMPAT, 'UTF-8') . $moduleClass . '">';
 
-		foreach ($modules as $rendermodule)
-		{
-			echo '<li class="tab"><a href="#" id="link_'.$rendermodule->id.'" class="linkopen" onclick="tabshow(\'module_'. $rendermodule->id.'\');return false">'.$rendermodule->title.'</a></li>';
-		}
-		echo '</ul>';
-		$counter = 0;
-		// modulecontent
-		foreach ($modules as $rendermodule)
-		{
-			$counter ++;
-
-			echo '<div tabindex="-1" class="tabcontent tabopen" id="module_'.$rendermodule->id.'">';
-			echo $rendermodule->content;
-			if ($counter != count($modules))
+			if ($module->showtitle)
 			{
-			echo '<a href="#" class="unseen" onclick="nexttab(\'module_'. $rendermodule->id.'\');return false;" id="next_'.$rendermodule->id.'">'.JText::_('TPL_ECUBE_NEXTTAB').'</a>';
+				echo '<' . $headerTag . ' class="' . $headerClass . '">' . $module->title . '</' . $headerTag . '>';
 			}
-			echo '</div>';
-		}
-		$modulecount--;
-		echo '</div>';
-	} else {
-		$temp = new stdClass;
-		$temp->content = $module->content;
-		$temp->params = $module->params;
-		$temp->title = $module->title;
-		$temp->id = $module->id;
-		$modules[] = $temp;
-		$modulecount--;
+
+			echo $module->content;
+		echo '</' . $moduleTag . '>';
 	}
 }

@@ -44,7 +44,7 @@ abstract class JHtmlIcon
 			}
 			else
 			{
-				$text = '<span class="icon-plus"></span>' . JText::_('JNEW');
+				$text = '<span class="icon-plus"></span> ' . JText::_('JNEW');
 			}
 		}
 		else
@@ -99,7 +99,7 @@ abstract class JHtmlIcon
 			}
 			else
 			{
-				$text = '<span class="icon-envelope"></span>' . JText::_('JGLOBAL_EMAIL');
+				$text = '<span class="icon-envelope"></span> ' . JText::_('JGLOBAL_EMAIL');
 			}
 		}
 		else
@@ -148,7 +148,6 @@ abstract class JHtmlIcon
 			return;
 		}
 
-		JHtml::_('bootstrap.tooltip');
 
 		// Show checked_out icon if the article is checked out by a different user
 		if (property_exists($article, 'checked_out')
@@ -220,7 +219,7 @@ abstract class JHtmlIcon
 			}
 
 			$text = '<span class="hasTooltip icon-' . $icon . ' tip" title="' . JHtml::tooltipText(JText::_('COM_CONTENT_EDIT_ITEM'), $overlib, 0, 0)
-				. '"></span>'
+				. '"></span> '
 				. JText::_('JGLOBAL_EDIT');
 		}
 
@@ -260,7 +259,7 @@ abstract class JHtmlIcon
 			}
 			else
 			{
-				$text = '<span class="icon-print"></span>' . JText::_('JGLOBAL_PRINT');
+				$text = '<span class="icon-print"></span> ' . JText::_('JGLOBAL_PRINT');
 			}
 		}
 		else
@@ -296,7 +295,7 @@ abstract class JHtmlIcon
 			}
 			else
 			{
-				$text = '<span class="icon-print"></span>' . JText::_('JGLOBAL_PRINT');
+				$text = '<span class="icon-print"></span> ' . JText::_('JGLOBAL_PRINT');
 			}
 		}
 		else

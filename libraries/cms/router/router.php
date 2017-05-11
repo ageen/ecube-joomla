@@ -173,7 +173,6 @@ class JRouter
 		{
 			// Create a JRouter object
 			$classname = 'JRouter' . ucfirst($client);
-
 			if (!class_exists($classname))
 			{
 				// @deprecated 4.0 Everything in this block is deprecated but the warning is only logged after the file_exists

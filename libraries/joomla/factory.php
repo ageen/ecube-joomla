@@ -121,10 +121,8 @@ abstract class JFactory
 			{
 				throw new Exception('Application Instantiation Error', 500);
 			}
-
 			self::$application = JApplicationCms::getInstance($id);
 		}
-
 		return self::$application;
 	}
 

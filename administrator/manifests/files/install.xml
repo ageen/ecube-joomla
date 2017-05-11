@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.7" type="file" method="upgrade">
+	<name>JComments Chinese</name>
+	<version>2.3.0</version>
+	<creationDate>20/02/2012</creationDate>
+	<author>Yusuf Wang, moiska</author>
+	<authorEmail>translations@joomlatune.com</authorEmail>
+	<authorUrl>http://www.joomlatune.com/jcomments/translations.html</authorUrl>
+	<copyright>(C) 2006-2012 JoomlaTune.ru. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<description>Chinese language pack for JComments</description>
+	<fileset>
+		<files folder="site" target="language/zh-CN">
+			<filename>zh-CN.com_jcomments.ini</filename>
+			<filename>zh-CN.plg_search_jcomments.ini</filename>
+		</files>
+		<files folder="admin" target="administrator/language/zh-CN">
+			<filename>zh-CN.com_jcomments.ini</filename>
+			<filename>zh-CN.com_jcomments.sys.ini</filename>
+			<filename>zh-CN.plg_content_jcomments.ini</filename>
+			<filename>zh-CN.plg_content_jcomments.sys.ini</filename>
+			<filename>zh-CN.plg_editors-xtd_jcommentsoff.ini</filename>
+			<filename>zh-CN.plg_editors-xtd_jcommentsoff.sys.ini</filename>
+			<filename>zh-CN.plg_editors-xtd_jcommentson.ini</filename>
+			<filename>zh-CN.plg_editors-xtd_jcommentson.sys.ini</filename>
+			<filename>zh-CN.plg_search_jcomments.ini</filename>
+			<filename>zh-CN.plg_search_jcomments.sys.ini</filename>
+			<filename>zh-CN.plg_system_jcomments.ini</filename>
+			<filename>zh-CN.plg_system_jcomments.sys.ini</filename>
+			<filename>zh-CN.plg_user_jcomments.ini</filename>
+			<filename>zh-CN.plg_user_jcomments.sys.ini</filename>
+		</files>
+	</fileset>
+</extension>

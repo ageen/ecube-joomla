@@ -130,6 +130,7 @@ final class JApplicationSite extends JApplicationCms
 		$this->loadDocument();
 
 		// Set up the params
+		// 存储最终发回到浏览器显示的页面
 		$document = $this->getDocument();
 		$router   = static::getRouter();
 		$params   = $this->getParams();
@@ -189,6 +190,8 @@ final class JApplicationSite extends JApplicationCms
 		}
 
 		$contents = JComponentHelper::renderComponent($component);
+		
+		// 将返回内容加载到文档的component部分中
 		$document->setBuffer($contents, 'component');
 
 		// Trigger the onAfterDispatch event.
@@ -571,8 +574,8 @@ final class JApplicationSite extends JApplicationCms
 	}
 
 	/**
-	 * Initialise the application.
-	 *
+	 * Initialise the application. 
+	 * 解决用户所需的语言和并加载该语言对象
 	 * @param   array  $options  An optional associative array of configuration settings.
 	 *
 	 * @return  void
@@ -789,7 +792,7 @@ final class JApplicationSite extends JApplicationCms
 	{
 		// Execute the parent method
 		parent::route();
-
+		// 授权验证用户菜单
 		$Itemid = $this->input->getInt('Itemid', null);
 		$this->authorise($Itemid);
 	}

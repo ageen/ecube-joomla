@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 
 $lang = JFactory::getLanguage(); ?>
 
-<ul class="pager pagenav">
+<ul class="pager unseen">
 <?php if ($row->prev) :
 	$direction = $lang->isRtl() ? 'right' : 'left'; ?>
 	<li class="previous">
