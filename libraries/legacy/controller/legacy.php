@@ -697,7 +697,6 @@ class JControllerLegacy extends JObject
 		}
 		// Record the actual task being fired
 		$this->doTask = $doTask;
-
 		return $this->$doTask();
 	}
 

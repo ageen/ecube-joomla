@@ -19,16 +19,14 @@
 // Check to ensure this file is included in Joomla!
 defined('_JEXEC') or die('Restricted access');
 
-
 AdminUIHelper::startAdminArea ($this);
 
 JToolBarHelper::title(vmText::_('COM_VIRTUEMART')." ".vmText::_('COM_VIRTUEMART_CONTROL_PANEL'), 'head vm_store_48');
 
-$tabs =  array('controlpanel' => 'COM_VIRTUEMART_CONTROL_PANEL' );
+$tabs =  array();
 if($this->manager('report')){
 	$tabs['statisticspage'] = 'COM_VIRTUEMART_STATISTIC_STATISTICS';
 }
-
 // Loading Templates in Tabs
 AdminUIHelper::buildTabs ( $this,$tabs );
 

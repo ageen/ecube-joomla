@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--type定义扩展类型，version指示该扩展安装到Joomla！的最低版本要求，group定义插件所属组(在模块和组件中没有此项)
+method="upgrade"指示在安装该扩展时，不允许卸载脚本并保留该扩展的数据
+client属性表示该模块是前端模块（site）或是后端模块（administrator）-->
+<extension version="2.5.5" type="module" method="upgrade" client="administrator">
+	<!--模块名称：模块功能描述-->
+	<name>Latest Extensions</name>
+	<!--开发作者-->
+	<author>Tim Plummer</author>
+	<!--创建日期-->
+	<creationDate>April 2013</creationDate>
+	<!--版权信息-->
+	<copyright>Copyright (C) 2013 Packt Publishing. All rights reserved.</copyright>
+	<!--软件许可证-->
+	<license>http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<!--开发作者邮箱-->
+	<authorEmail>example@packtpub.com</authorEmail>
+	<!--开发作者主页-->
+	<authorUrl>http://packtpub.com</authorUrl>
+	<!--版本号:每次发布新版本时，针对改动范围调整版本号。-->
+	<version>1.5.0</version>
+	<!--描述信息-->
+	<description>Displays the most recently installed extensions.</description>
+	<!--files标签告诉Joomla！所有扩展使用的文件夹及文件，
+	注：新版本Joomla!使用folder标签自动包含一个文件夹里面的所有文件和子文件夹，无需逐个罗列-->
+	<files>
+		<!--包含模块代码文件-->
+		<filename module="mod_latestextensions">mod_latestextensions.php</filename>
+		<!--考虑安全风险，index.html应该包含在扩展的每个文件夹里-->
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<folder>tmpl</folder>
+	</files>
+	<!--语言文件-->
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.mod_latestextensions.ini</language>
+		<language tag="zh-CN">language/zh-CN/zh-CN.mod_latestextensions.ini</language>
+	</languages>
+	<media destination="mod_latestextensions" folder="media">
+		<filename>index.html</filename>
+		<folder>css</folder>
+	</media>
+	<!--加入模块配置参数-->
+	<config>
+		<fields name="params">
+			<!--基本选项-->
+			<fieldset name="basic">
+				<field name="count" type="text" default="5" label="MOD_LATESTEXTENSIONS_FIELD_LABEL" description="MOD_LATESTEXTENSIONS_FIELD_DESC" />
+			</fieldset>
+			<!--高级选项-->
+			<!--moduleclass_sfx参数允许增加自定义样式到模块-->
+			<fieldset name="advanced">
+				<!--让用户创建不同的模板，如果他们需要自定义这个模块，也许需要为相同的模块在网站的不同位置显示定义多个，不同的布局-->
+				<field name="layout" type="modulelayout" label="JFIELD_ALT_LAYOUT_LABEL" description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+				<field name="moduleclass_sfx" type="text" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+	<!--帮助文件-->
+	<help url="HELP_EXTENSIONS_MODULE_LATESTEXTENSIONS_URL"/>
+</extension>

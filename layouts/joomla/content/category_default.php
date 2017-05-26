@@ -57,6 +57,7 @@ $tagsData = $displayData->get('category')->tags->itemTags;
 				<div class="clr"></div>
 			</div>
 		<?php endif; ?>
+		echo $displayData->subtemplatename;
 		<?php echo $displayData->loadTemplate($displayData->subtemplatename); ?>
 
 		<?php if ($displayData->get('children') && $displayData->maxLevel != 0) : ?>

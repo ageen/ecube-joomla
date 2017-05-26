@@ -35,7 +35,7 @@ if(vRequest::getInt('dynamic')){
 
 	return ;
 }
-?> <div class="category-view"> <?php
+?> <div class="wrapper category-view"> <?php
 $js = "
 jQuery(document).ready(function () {
 	jQuery('.orderlistcontainer').hover(

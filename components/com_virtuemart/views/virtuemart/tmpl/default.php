@@ -24,7 +24,7 @@ defined('_JEXEC') or die('Restricted access');
 <?php # Vendor Store Description
 echo $this->add_product_link;
 if (!empty($this->vendor->vendor_store_desc) and VmConfig::get('show_store_desc', 1)) { ?>
-<div class="vendor-store-desc">
+<div class="wrapper vendor-store-desc">
 	<?php echo $this->vendor->vendor_store_desc; ?>
 </div>
 <?php } ?>

@@ -5,7 +5,7 @@ class JConfig {
 	public $display_offline_message = '0';
 	public $offline_image = '';
 	public $sitename = 'e魔坊工作室';
-	public $editor = 'jce';
+	public $editor = 'tinymce';
 	public $captcha = '0';
 	public $list_limit = '20';
 	public $access = '1';

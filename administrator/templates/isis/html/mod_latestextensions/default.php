@@ -13,9 +13,6 @@ defined('_JEXEC') or die;
 <div class="span3 hidden-phone">
 <?php echo $item->type; ?>
 </div>
-<div class="span3 hidden-tablet hidden-phone">
-<?php echo $item->id; ?>
-</div>
 </div>
 <?php endforeach; ?>
 </div>

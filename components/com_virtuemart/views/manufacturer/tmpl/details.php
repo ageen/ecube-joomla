@@ -20,7 +20,7 @@
 defined('_JEXEC') or die('Restricted access');
 ?>
 
-<div class="manufacturer-details-view">
+<div class="wrapper manufacturer-details-view">
 	<h1><?php echo $this->manufacturer->mf_name; ?></h1>
 
 	<div class="spacer">

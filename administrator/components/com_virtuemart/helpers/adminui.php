@@ -104,7 +104,7 @@ class AdminUIHelper {
 					<?php echo $vmView->langList; ?>
 				</div>
 			<?php } else {
-				?><a href="index.php?option=com_virtuemart&amp;view=virtuemart" ><img src="<?php echo JURI::root(true).'/administrator/components/com_virtuemart/assets/images/vm_menulogo.png'?>"></a>
+				?><a href="index.php?option=com_virtuemart&amp;view=virtuemart" class="text-center">VirtueMart <?php echo vmVersion::$RELEASE ?></a>
 			<?php }
 			AdminUIHelper::showAdminMenu($vmView);
 
@@ -157,58 +157,6 @@ class AdminUIHelper {
 				}
 			}
 		}
-
-		if(vRequest::getCmd('vmms')) $nag = '';
-
-
-		if($nag === ''){
-            //style="background:#FF6A00;padding:5px 5px 5px 5px;-webkit-appearance: button;-moz-appearance: button;appearance: button;"
-
-			$nag = '
-                <div style="width:auto;background:#FFFBA0;padding:8px 8px 8px 8px;font-size:14px;border:1px solid #FF6A00;">
-                    <p style="text-align:left;">Like VirtueMart?</p>
-                    <p style="text-align:right"> => Become a Supporter</p>
-                    <p style="text-align:center;">Reliable Security and Advanced Development thanks to our members</p>
-                    <p style="text-align:center;"><a href="http://extensions.virtuemart.net/support/virtuemart-supporter-membership-detail" target="_blank" ><button style="width:100%;background:#FF6A00;padding:5px 5px 5px 5px;font-size:15px;">VirtueMart membership<br>Buy now</button></a></p>
-                </div>';
-
-			if(!empty( $ackey )) {
-
-				$j = 'jQuery(document).ready(function($) {
-				token = "'.$token.'";
-		jQuery.ajax({
-                    type: "GET",
-                    cache: true,
-                    dataType: "json",
-                    url: "index.php?option=com_virtuemart&view=virtuemart&task=getMemberStatus&"+token+"="+1,
-                }).done(
-                    function(data) {
-                        if(data.html!=="undefined"){
-                            var cib = jQuery("#'.$prefix.'"+token);
-                            cib.html(data.html);
-                            if(data.res=="valid"){
-                                cib = jQuery("#vmver-"+token);
-                                cib.show();
-                            }
-                        }
-                    }
-                )
-			});';
-				vmJsApi::addJScript( 'nag', $j );
-			}
-		}
-
-
-		?>
-        <style>#<?php echo $prefix ?>vmver-<?php echo $token ?> { <?php echo $dplyVer ?>}</style>
-        <div class="vm-installed-version">VirtueMart <?php echo vmVersion::$RELEASE ?></div>
-        <div id="<?php echo $prefix ?>vmver-<?php echo $token ?>" class="vm-installed-version" >
-			<?php echo vmVersion::$CODENAME.' '.vmVersion::$REVISION ?>
-        </div>
-        <div id="<?php echo $prefix.$token ?>">
-			<?php echo $nag; ?>
-        </div> <?php
-
     }
 
 	/**

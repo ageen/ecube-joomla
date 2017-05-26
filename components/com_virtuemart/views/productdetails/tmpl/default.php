@@ -27,13 +27,11 @@ if (empty($this->product)) {
 
 echo shopFunctionsF::renderVmSubLayout('askrecomjs',array('product'=>$this->product));
 
-
-
 if(vRequest::getInt('print',false)){ ?>
 <body onload="javascript:print();">
 <?php } ?>
 
-<div class="product-container productdetails-view productdetails" >
+<div class="wrapper product-container productdetails-view productdetails" >
 
     <?php
     // Product Navigation
@@ -69,7 +67,7 @@ if(vRequest::getInt('print',false)){ ?>
     	<a href="<?php echo $catURL ?>" class="product-details" title="<?php echo $categoryName ?>"><?php echo vmText::sprintf('COM_VIRTUEMART_CATEGORY_BACK_TO',$categoryName) ?></a>
 	</div>
 
-    <?php // Product Title   ?>
+    <?php // Product Title ?>
     <h1 itemprop="name"><?php echo $this->product->product_name ?></h1>
     <?php // Product Title END   ?>
 

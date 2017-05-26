@@ -500,7 +500,9 @@ a.ask-a-question:hover{
 .ask-a-question,.manufacturer,.manufacturer-details-view .email-weblink,.manufacturer-details-view .description{
   margin: 10px 0 0;
 }
-
+.manufacturer-details-view{
+  padding: 15px;
+}
 .manufacturer-details-view img{
   float: right;
   margin: 0 0 10px 20px;
@@ -860,7 +862,7 @@ ul.VMmenu,.VMmenu ul,.VMmenu li{
 }
 
 .vendor-store-desc,.category-view,.featured-view,.discontinued-view,.latest-view,.topten-view,.recent-view,.related-products-view,.browse-view,.order-view{
-  margin-bottom: 25px;
+  padding: 15px;
 }
 
 .main-image,.featured-view .product,.discontinued-view .product,.latest-view .product,.topten-view .product,.recent-view .product,.related-products-view .product{
@@ -887,7 +889,9 @@ ul.VMmenu,.VMmenu ul,.VMmenu li{
   max-width: 100%;
   margin-bottom: 15px;
 }
-
+.product-container{
+  padding: 15px;
+}
 .vm-product-container .vm-product-media-container {
   float: left;
   width: 55%;

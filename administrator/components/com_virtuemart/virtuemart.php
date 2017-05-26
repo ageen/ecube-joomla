@@ -39,6 +39,7 @@ if($_controller) {
 
 		JPluginHelper::importPlugin('vmextended');
 		$dispatcher = JDispatcher::getInstance();
+
 		$results = $dispatcher->trigger('onVmAdminController', array($_controller));
 
 		if (empty($results)) {
@@ -71,7 +72,6 @@ if($exe){
 		$app->redirect('index.php?option=com_virtuemart');
 	}
 	$controller = new $_class();
-
 // Perform the Request task
 	$controller->execute(vRequest::getCmd('task', $_controller));
 

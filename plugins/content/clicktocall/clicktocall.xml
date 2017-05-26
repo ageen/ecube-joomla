@@ -1,36 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--type定义扩展类型，version指示该扩展安装到Joomla！的最低版本要求，group定义插件所属组(在模块和组件中没有此项)
+method="upgrade"指示在安装该扩展时，不允许卸载脚本并保留该扩展的数据-->
 <extension version="3.0" type="plugin" group="content" method="upgrade">
-<name>Content - Click To Call</name>
-<author>Tim Plummer</author>
-<creationDate>April 2013</creationDate>
-<copyright>Copyright (C) 2013 Packt Publishing. All rights reserved.</copyright>
-<license> http://www.gnu.org/licenses/gpl-3.0.html</license>
-<authorEmail>example@packtpub.com</authorEmail>
-<authorUrl>http://packtpub.com</authorUrl>
-<version>1.2.1</version>
-<description>This plugin will replace phone numbers with click to call links. Requires Joomla! 3.0 or greater. Don't forget to publish this plugin!</description>
-<files>
-	<filename plugin="clicktocall">clicktocall.php</filename>
-	<filename plugin="clicktocall">index.html</filename>
-</files>
-<languages><language tag="en-GB">language/en-GB/en-GB.plg_content_clicktocall.ini</language></languages>
-<config>
-<fields name="params">
-<fieldset name="basic">
-<field name="phoneDigits1" type="text"
-default="4"
-label="PLG_CONTENT_CLICKTOCALL_FIELD_PHONEDIGITS1_LABEL"
-description="PLG_CONTENT_CLICKTOCALL_FIELD_PHONEDIGITS1_DESC"
-/>
-<field name="phoneDigits2" type="text"
-default="4"
-label="PLG_CONTENT_CLICKTOCALL_FIELD_PHONEDIGITS2_LABEL"
-description="PLG_CONTENT_CLICKTOCALL_FIELD_PHONEDIGITS2_DESC"
-/>
-</fieldset>
-</fields>
-</config>
-<updateservers>
-	<server type="extension" priority="1" name="Click To Call Plugin Updates">http://192.168.0.144/joomla3/updates/clicktocall.xml</server>
-</updateservers>
+	<!--插件名称：插件类型 - 插件名称-->
+	<name>Content - Click To Call</name>
+	<!--开发作者-->
+	<author>Tim Plummer</author>
+	<!--创建日期-->
+	<creationDate>April 2013</creationDate>
+	<!--版权信息-->
+	<copyright>Copyright (C) 2013 Packt Publishing. All rights reserved.</copyright>
+	<!--软件许可证-->
+	<license>http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<!--开发作者邮箱-->
+	<authorEmail>example@packtpub.com</authorEmail>
+	<!--开发作者主页-->
+	<authorUrl>http://packtpub.com</authorUrl>
+	<!--版本号:每次发布新版本时，针对改动调整版本号。-->
+	<version>1.2.0</version>
+	<!--描述信息-->
+	<description>This plugin will replace phone numbers with click to call links. Requires Joomla! 3.0 or greater.Don't forget to publish this plugin!</description>
+	<!--files标签告诉Joomla！所有扩展使用的文件夹及文件，
+	注：新版本Joomla!使用folder标签自动包含一个文件夹里面的所有文件和子文件夹，无需逐个罗列-->
+	<files>
+		<!--包含插件代码文件-->
+		<filename plugin="clicktocall">clicktocall.php</filename>
+		<!--考虑安全风险，index.html应该包含在扩展的每个文件夹里-->
+		<filename>index.html</filename>
+	</files>
+	<!---->
+	<languages>
+		<language tag="en-GB">language/en-GB/en-GB.plg_content_clicktocall.ini</language>
+		<language tag="zh-CN">language/zh-CN/zh-CN.plg_content_clicktocall.ini</language>
+	</languages>
+	<!--add two parameters to our plugin-->
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="phoneDigits1" type="text" default="4" label="PLG_CONTENT_CLICKTOCALL_FIELD_PHONEDIGITS1_LABEL" description="PLG_CONTENT_CLICKTOCALL_FIELD_PHONEDIGITS1_DESC" />
+				<field name="phoneDigits2" type="text" default="4" label="PLG_CONTENT_CLICKTOCALL_FIELD_PHONEDIGITS2_LABEL" description="PLG_CONTENT_CLICKTOCALL_FIELD_PHONEDIGITS2_DESC" />
+			</fieldset>
+		</fields>
+	</config>
 </extension>
